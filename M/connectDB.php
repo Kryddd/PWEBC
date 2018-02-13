@@ -11,3 +11,5 @@ if(!isset($dbh)) {
         die('Erreur PDO : ' . $e->getMessage());
     }
 }
+
+?>
