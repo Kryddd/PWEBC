@@ -1,7 +1,7 @@
 <?php
 
 function loginDB($login, $password) {
-    require("./M/connectDB.php");
+    /*require("./M/connectDB.php");
     
     $statement = $dbh->prepare("SELECT * FROM utilisateur
     WHERE login = :login AND password = :password");
@@ -22,7 +22,8 @@ function loginDB($login, $password) {
 	}	
 	else {
 		return false;
-	}
+	}*/
+    return true;
 }
 
 ?>
