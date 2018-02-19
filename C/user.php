@@ -2,29 +2,24 @@
 
 function login() {
     //récupère le login et mdp en POST ou les init
-    $login= isset($_POST['login'])?($_POST['login']):'';
-    $mdp= isset($_POST['mdp'])?($_POST['mdp']):'';
+    $login= isset($_POST['login'])?trim($_POST['login']):'';
+    $mdp= isset($_POST['mdp'])?trim($_POST['mdp']):'';
     $msg = '';
 
     if(count($_POST) == 0) {
-        require("V/user/login.tpl");
+        require("V/base.tpl");
     }
     else {
         require("M/userDB.php");
         if  (! loginDB($login,$mdp)) {
             $msg = "erreur de saisie";
-            require('V/user/login.tpl') ;
+            require('V/user/base.tpl') ;
         }
         else  { 
-            //$user = $_SESSION['user'];
-            /*
-				$controle = user;
-				$action = accueil;
-				header("Location:index.php?controle=".$controle."&action=".$action);
-				*/
             $_SESSION['login'] = $login;
             $_SESSION['mdp'] = $mdp;
-            accueil();
+            var_dump($_SESSION);
+            header("Location:index.php?controle=user&action=accueil");
 
         }
     }
@@ -34,7 +29,7 @@ function accueil() {
 	if(!isset($_SESSION['login'])) {
 		login();
 	}
-    require("V/user/accueil.tpl");
+    require("V/base.tpl");
 }
 
 function addLocation() {
