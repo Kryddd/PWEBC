@@ -25,7 +25,7 @@ global $action;
         <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
         <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
-        <script src="js/jeuMap.js"></script>
+        <script src="./V/js/jeuMap.js"></script>
         <script>
 		$( function() {
 			$( "#persodraggable" ).draggable();

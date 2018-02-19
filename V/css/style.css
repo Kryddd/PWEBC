@@ -37,3 +37,15 @@
     text-decoration: none;
     color: white;
 }
+
+/* PAGE */
+body {
+    margin-top: 5vh;
+}
+
+/* MAP */
+
+#map {
+    width 100vw;
+    height: 80vh;
+}
