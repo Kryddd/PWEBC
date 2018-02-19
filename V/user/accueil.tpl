@@ -18,5 +18,10 @@
     </head>
     <body>
         <?php require("./V/user/" . $GLOBALS['action'] . ".tpl"); ?>
+		
+		<!-- créer un scrollview avec des joueurs dispos récupérés par php -->
+		<form method="post" action="index.php?controle=user&action=play">
+			<button type="submit" value=" <!-- selectedOpponent--> ">Jouer !</button>
+		</form>
     </body>
 </html>

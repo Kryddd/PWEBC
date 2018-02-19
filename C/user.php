@@ -31,6 +31,9 @@ function login() {
 }
 
 function accueil() {
+	if(!isset($_SESSION['login'])) {
+		login();
+	}
     require("V/user/accueil.tpl");
 }
 
@@ -49,7 +52,16 @@ function addLocation() {
 }
 
 function play() {
-    require("V/user/play.tpl");
+	
+	if(count($_POST) == 0) {
+		accueil();
+	}
+	else {
+		$opponent = $_POST['opponent'];
+		//faire un truc avec l'opponent
+		require("V/user/play.tpl");
+	}
+    
 }
 
 function ranking() {

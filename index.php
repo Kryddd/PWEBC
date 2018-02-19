@@ -10,7 +10,7 @@ if(count($_GET) != 0 && !isset($_GET['action'])) {
 else {
     if(count($_GET) == 0) {
         if(isset($_SESSION['user'])) {
-            play();
+            accueil();
         }
         else {
             login();
