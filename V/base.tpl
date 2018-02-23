@@ -26,18 +26,6 @@ global $action;
 
         <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
         <script src="./V/js/jeuMap.js"></script>
-        <script>
-		$( function() {
-			$( "#persodraggable" ).draggable();
-			$( "#map" ).droppable({
-				drop: function( event, ui ) {
-					$( this )
-					.addClass( "ui-state-highlight" )
-					.find( "p" )
-					.html( "Dropped!" );
-				}
-			});
-		} );
-	</script>
+
     </body>
 </html>

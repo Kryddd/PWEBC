@@ -46,6 +46,6 @@ body {
 /* MAP */
 
 #map {
-    width 100vw;
-    height: 80vh;
+    width: 900px;
+    height: 400px;
 }
