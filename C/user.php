@@ -45,6 +45,7 @@ function signup() {
             $msg = 'Erreur DB!';
         }
         else {
+            // Pas d'erreur
             $msg = 'Votre compte est enregistre  ';
         }
         
@@ -73,6 +74,24 @@ function addLocation() {
     }
 }
 
+function choixPartie() {
+    require("M/userDB.php");
+    if(count($_POST) == 0) {
+        // Récupères les parties dans la DB
+        $parties = fetchParties();
+        
+        //Affiche les parties
+        require("V/base.tpl");
+    }
+    else {
+        // Une des parties est cliquée
+        
+        // Lance la partie selectionnée
+        $partieSelected = array_keys($_POST);
+        $nextURL = "index.php?controle=user&action=play&partie=" . $partieSelected[0];
+    }
+}
+
 function play() {
 	
 	if(count($_POST) == 0) {
@@ -93,7 +112,7 @@ function ranking() {
 
 function disconnect() {
     require("M/disconnectDB.php");
-    disconnectDB();
+    // disconnectDB();
     session_destroy();
     header("Location:index.php");
 }

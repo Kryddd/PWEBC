@@ -51,4 +51,15 @@ function signupDB($username, $password) {
     return true;
 }
 
+function fetchParties() {
+    require('M/connectDB.php');
+    $partiesQuery = 'SELECT * FROM partie';
+    $prepParties = $dbh->prepare($partiesQuery);
+    $prepParties->execute();
+    
+    $parties = $prepParties->fetchAll();
+    
+    return $parties;
+}
+
 ?>
