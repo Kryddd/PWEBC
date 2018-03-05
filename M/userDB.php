@@ -39,7 +39,7 @@ function userExists($username) {
     return true;
 }
 
-function signinDB($username, $password) {
+function signupDB($username, $password) {
     require('M/connectDB.php');
     $insertUser = $dbh->prepare('INSERT INTO utilisateur(username, password) 
     VALUES(?, ?)');

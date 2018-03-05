@@ -40,7 +40,7 @@ function signup() {
         else if(userExists($_POST['login'])) {
             $msg = 'Le nom d utilisateur est deja utilise';
         }
-        else if(!signinDB($_POST['login'], $_POST['mdp'])) {
+        else if(!signupDB($_POST['login'], $_POST['mdp'])) {
             // Ajout de l'utilisateur dans la BDD
             $msg = 'Erreur DB!';
         }
