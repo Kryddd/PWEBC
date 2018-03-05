@@ -1,28 +1,53 @@
 <?php
 
 function loginDB($login, $password) {
-    /*require("./M/connectDB.php");
+    require('M/connectDB.php');
+    $queryUser= 'SELECT * FROM utilisateur
+    WHERE username=? AND password=?;';
     
-    $statement = $dbh->prepare("SELECT * FROM utilisateur
-    WHERE login = :login AND password = :password");
+    $prepUser = $dbh->prepare($queryUser);
     
-    $statement->bindParam(':login', $login);
-    $statement->bindParam(':password', $password);
-	
-	//choper le link de la DB pour le mettre dans $link
-	$res = mysqli_query($link,$statement) or die ('erreur de requete : ' . $statement);
-	if (mysqli_num_rows($res)> 0) {
-		$_SESSION['user'] = mysqli_fetch_assoc($res);
-		
-		$boolConnectStatement = "UPDATE utilisateur SET bConnect = '1' WHERE login = '".$_SESSION['user']['login']."';";
-		//choper le link de la DB
-		mysqli_query($link,$boolConnectStatement) or die ('erreur de requete : ' . $boolConnectStatement);
-		
-		return true;
-	}	
-	else {
-		return false;
-	}*/
+    $prepUser->bindValue(1, $login, PDO::PARAM_STR);
+    $prepUser->bindValue(2, $password, PDO::PARAM_STR);
+    $prepUser->execute();
+    
+    $user = $prepUser->fetch();
+    if($user['username'] == $login && $user['password'] == $password) {
+        return true;
+    }
+    
+    return false;
+}
+
+function userExists($username) {
+    require('M/connectDB.php');
+    $queryUser= 'SELECT * FROM utilisateur
+    WHERE username=?;';
+    
+    $prepUser = $dbh->prepare($queryUser);
+    
+    $prepUser->bindValue(1, $username, PDO::PARAM_STR);
+    $prepUser->execute();
+    
+    $user = $prepUser->fetch();
+    
+    // Si la requete n'a pas de resutat
+    if($user == false) {
+        return false;
+    }
+    
+    return true;
+}
+
+function signinDB($username, $password) {
+    require('M/connectDB.php');
+    $insertUser = $dbh->prepare('INSERT INTO utilisateur(username, password) 
+    VALUES(?, ?)');
+    
+    $insertUser->bindParam(1, $username);
+    $insertUser->bindParam(2, $password);
+    $insertUser->execute();
+    
     return true;
 }
 

@@ -34,7 +34,7 @@ else {
         else {
             // utilisateur non connecté
             
-            if($_GET['action'] == 'login' && $_GET['controle'] == 'user') {
+            if(($_GET['action'] == 'login' || $_GET['action'] == 'signup') && $_GET['controle'] == 'user') {
                 // Permet à l'utilisateur de se connecter
                 $controle = $_GET['controle'];
                 $action = $_GET['action'];

@@ -11,9 +11,9 @@ function login() {
     }
     else {
         require("M/userDB.php");
-        if  (! loginDB($login,$mdp)) {
+        if  (!loginDB($login,$mdp)) {
             $msg = "erreur de saisie";
-            require('V/user/base.tpl') ;
+            require('V/base.tpl') ;
         }
         else  { 
             $_SESSION['login'] = $login;
@@ -22,6 +22,33 @@ function login() {
             header("Location:index.php?controle=user&action=accueil");
 
         }
+    }
+}
+
+function signup() {
+    $msg = '';
+    if(count($_POST) == 0) {
+        require("V/base.tpl");
+    }
+    else {
+        require('M/userDB.php');
+        
+        // Prise en compte des erreurs
+        if($_POST['mdp'] != $_POST['mdpConfirm']) {
+            $msg = 'Les mots de passe ne sont pas identiques!';
+        }
+        else if(userExists($_POST['login'])) {
+            $msg = 'Le nom d utilisateur est deja utilise';
+        }
+        else if(!signinDB($_POST['login'], $_POST['mdp'])) {
+            // Ajout de l'utilisateur dans la BDD
+            $msg = 'Erreur DB!';
+        }
+        else {
+            $msg = 'Votre compte est enregistre  ';
+        }
+        
+        require('V/base.tpl');
     }
 }
 

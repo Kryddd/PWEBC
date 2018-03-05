@@ -1,8 +1,8 @@
 <?php
 
 $host = "localhost";
-$db = "PWEBC";
-$user = "root";
-$pass = "root";
+$db = "pweb17_couderc1";
+$user = "couderc1";
+$pass = "couderc1";
 
 ?>

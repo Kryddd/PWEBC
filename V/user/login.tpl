@@ -7,4 +7,5 @@
     <button class="btn btn-lg btn-primary btn-block" type="submit">Se connecter</button>
     <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
 </form>
-<?php echo($msg); ?>
+<b><?php echo($msg); ?></b><br>
+<a href="index.php?controle=user&action=signup"><b>Cr&eacute;er un compte</b></a>
