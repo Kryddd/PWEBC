@@ -87,8 +87,10 @@ function choixPartie() {
         // Une des parties est cliquée
         
         // Lance la partie selectionnée
+        var_dump($_POST);
         $partieSelected = array_keys($_POST);
         $nextURL = "index.php?controle=user&action=play&partie=" . $partieSelected[0];
+        header("Location:" . $nextURL);
     }
 }
 
