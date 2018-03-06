@@ -1,5 +1,8 @@
 window.onload = function () {
 
+    // Masque les elements de partie par defaut
+    document.getElementById("partie").style.display = "none";
+    
     //Chargement initial de la MAP
     var map = L.map('map').setView([14,-14.8883335],2);
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);

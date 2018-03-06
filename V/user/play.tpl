@@ -1,12 +1,26 @@
-<head>
-	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-	<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
-    <script src="../js/jeuMap.js"></script>
-</head>
-<body>
-	
-	<div id="map" class="ui-widget-header" ></div>
-	<div id="persodraggable" class="ui-widget-content" style="border: solid; width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0;"></div>
-</body>
+<div id="choixPartie" class="container">
+    <?php $i = 0; foreach($parties as $partie) { ?>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3><?php echo($partie['nomPartie']); ?></h3>
+                </div>
+                <div class="panel-body">
+                    <h4>Difficult&eacute; : <?php echo($partie['difficulte']); ?></h4>
+                    <form action="index.php?controle=user&action=choixPartie" method="post">
+                        <div class="button">
+                            <input type="submit" name="<?php echo($i); ?>" class="btn btn-danger" value="Lancer" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php $i++; } ?>
+</div>
+
+<div id="partie">
+    <div id="map" class="ui-widget-header" ></div>
+    <div id="persodraggable" class="ui-widget-content" style="border: solid; width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0;"></div>
+</div>

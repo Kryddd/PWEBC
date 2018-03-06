@@ -9,7 +9,7 @@
                 <a class="nav-link" href="index.php?controle=user&action=accueil">Accueil</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index.php?controle=user&action=choixPartie">Jouer</a>
+                <a class="nav-link" href="index.php?controle=user&action=play">Jouer</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="index.php?controle=user&action=classement">Classement</a>

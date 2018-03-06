@@ -74,37 +74,24 @@ function addLocation() {
     }
 }
 
-function choixPartie() {
-    require("M/userDB.php");
-    if(count($_POST) == 0) {
-        // Récupères les parties dans la DB
+function play() {
+	require("M/userDB.php");
+	if(count($_POST) == 0) {
+		// Récupères les parties dans la DB
         $parties = fetchParties();
         
         //Affiche les parties
         require("V/base.tpl");
-    }
-    else {
-        // Une des parties est cliquée
-        
-        // Lance la partie selectionnée
-        var_dump($_POST);
-        $partieSelected = array_keys($_POST);
-        $nextURL = "index.php?controle=user&action=play&partie=" . $partieSelected[0];
-        header("Location:" . $nextURL);
-    }
-}
-
-function play() {
-	
-	if(count($_POST) == 0) {
-		accueil();
 	}
 	else {
-		$opponent = $_POST['opponent'];
-		//faire un truc avec l'opponent
-		require("V/user/play.tpl");
+		// Partie terminée
+        // POST via ajax
 	}
     
+}
+
+function getLieux($numPartie) {
+    // Appelée via ajax
 }
 
 function ranking() {
