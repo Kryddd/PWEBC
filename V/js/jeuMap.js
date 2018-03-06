@@ -1,7 +1,35 @@
-window.onload = function () {
+$(document).ready(function() {
 
     // Masque les elements de partie par defaut
     document.getElementById("partie").style.display = "none";
+    
+    // Click sur un boutton de choix
+    $(".btnChoix").click(function (){
+        
+        numLieu = $(this).attr('name');
+
+        // Affiche le jeux
+        $("#choixPartie").css("display", "none");
+        $("#partie").css("display", "block");
+
+        // Désactive les boutons avant la requete
+        $(".btnChoix").prop("disabled", true);
+        
+        requestLieux = $.ajax({
+            url: "index.php?controle=user&action=getLieux",
+            type: "post",
+            data: numLieu
+        });
+        
+        requestLieux.done(function(response, textStatus){
+            alert(response + textStatus);
+        });
+        
+        // Réactive les boutons
+        requestLieux.always(function(){
+            $(".btnChoix").prop("disabled", false);
+        })
+    });
     
     //Chargement initial de la MAP
     var map = L.map('map').setView([14,-14.8883335],2);
@@ -17,6 +45,8 @@ window.onload = function () {
 			.html( "Dropped!" );
 		}
 	});
+    
+    
 	
 	/* ne marche pas, essayer plutot de mettre la map en droppable et récupérer les coordonnées où est droppé la draggable
 	var cz = L.circle([50.5, 30.5], {radius: 20});
@@ -35,5 +65,5 @@ window.onload = function () {
 	
 	
 
-}
+});
 

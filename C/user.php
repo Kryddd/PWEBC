@@ -90,8 +90,9 @@ function play() {
     
 }
 
-function getLieux($numPartie) {
+function getLieux() {
     // Appelée via ajax
+    var_dump($_POST);
 }
 
 function ranking() {

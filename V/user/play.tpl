@@ -8,11 +8,9 @@
                 </div>
                 <div class="panel-body">
                     <h4>Difficult&eacute; : <?php echo($partie['difficulte']); ?></h4>
-                    <form action="index.php?controle=user&action=choixPartie" method="post">
-                        <div class="button">
-                            <input type="submit" name="<?php echo($i); ?>" class="btn btn-danger" value="Lancer" />
-                        </div>
-                    </form>
+                    <div class="button">
+                        <input type="button" name="<?php echo($i); ?>" class="btn btn-danger btnChoix" value="Lancer" />
+                    </div>
                 </div>
             </div>
         </div>
