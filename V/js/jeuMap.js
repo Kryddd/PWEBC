@@ -1,28 +1,35 @@
 $(document).ready(function() {
 
+    var lieux;
+    var numPartie;
+    var nomPartie;
+    
     // Masque les elements de partie par defaut
     document.getElementById("partie").style.display = "none";
     
     // Click sur un boutton de choix
     $(".btnChoix").click(function (){
         
-        numLieu = $(this).attr('name');
-
+        numPartie = $(this).attr('name');
+        nomPartie = $(this).parent().parent().parent().find("h3").text();
+        $("#nomPartie").text(nomPartie);
+        
         // Affiche le jeux
         $("#choixPartie").css("display", "none");
         $("#partie").css("display", "block");
 
         // Désactive les boutons avant la requete
         $(".btnChoix").prop("disabled", true);
-        
         requestLieux = $.ajax({
             url: "index.php?controle=user&action=getLieux",
             type: "post",
-            data: numLieu
+            data: {
+                'partie': numPartie
+            }
         });
         
         requestLieux.done(function(response, textStatus){
-            alert(response + textStatus);
+            lieux = response;
         });
         
         // Réactive les boutons

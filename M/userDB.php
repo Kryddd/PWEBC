@@ -62,4 +62,16 @@ function fetchParties() {
     return $parties;
 }
 
+function fetchLieuxDB($numPartie) {
+    require('M/connectDB.php');
+    $queryLieux= 'SELECT * FROM lieu WHERE idPartie=?';
+    
+    $prepLieux = $dbh->prepare($queryLieux);
+    $prepLieux->bindParam(1, $numPartie);
+    $prepLieux->execute();
+    
+    $lieux = $prepLieux->fetchAll();
+    return $lieux;
+}
+
 ?>

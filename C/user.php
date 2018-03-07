@@ -92,7 +92,10 @@ function play() {
 
 function getLieux() {
     // Appelée via ajax
-    var_dump($_POST);
+    require("M/userDB.php");
+    $lieux = fetchLieuxDB($_POST['partie']);
+    
+    echo(json_encode($lieux));
 }
 
 function ranking() {
