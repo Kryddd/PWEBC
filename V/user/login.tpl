@@ -8,4 +8,4 @@
     <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
 </form>
 <b><?php echo($msg); ?></b><br>
-<a href="index.php?controle=user&action=signup"><b>Cr&eacute;er un compte</b></a>
+<a href="index.php?controle=user&action=signup" style="text-align: center;"><b>Cr&eacute;er un compte</b></a>
