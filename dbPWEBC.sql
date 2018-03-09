@@ -89,7 +89,8 @@ INSERT INTO `partie` (`idPartie`, `nomPartie`, `difficulte`) VALUES
 CREATE TABLE `utilisateur` (
   `idUtilisateur` int(11) NOT NULL,
   `username` varchar(25) NOT NULL,
-  `password` varchar(25) NOT NULL
+  `password` varchar(25) NOT NULL,
+  `scoreTotal` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

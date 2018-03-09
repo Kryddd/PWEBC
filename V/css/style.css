@@ -39,6 +39,10 @@
 }
 
 /* PAGE */
+h1 {
+	text-align: center;
+}
+
 body {
     margin-top: 10vh;
 }

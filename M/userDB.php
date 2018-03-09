@@ -46,6 +46,7 @@ function signupDB($username, $password) {
     
     $insertUser->bindParam(1, $username);
     $insertUser->bindParam(2, $password);
+	$insertUser->bindParam(3, 0);
     $insertUser->execute();
     
     return true;

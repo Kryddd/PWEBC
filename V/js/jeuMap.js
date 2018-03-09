@@ -1,3 +1,5 @@
+var mapJeu;
+
 $(document).ready(function() {
 
     var lieux;
@@ -39,7 +41,7 @@ $(document).ready(function() {
     });
     
     //Chargement initial de la MAP
-    var mapJeu = L.map('map').setView([51.505, -0.09], 13);
+    mapJeu = L.map('map').setView([51.505, -0.09], 13);
     
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
 		maxZoom: 18,
@@ -48,6 +50,16 @@ $(document).ready(function() {
 			'Imagery © <a href="http://mapbox.com">Mapbox</a>',
 		id: 'mapbox.streets'
 	}).addTo(mapJeu);
+	
+	
+	
+	
+	
+	/*
+	$.each(lieux, function(i, obj) {
+		alert(obj.ville);
+	});
+	*/
 	
 	//init droppable/draggable
 	/*$( "#persodraggable" ).draggable({ snap: "#map", snapMode: "inner" });
@@ -80,4 +92,12 @@ $(document).ready(function() {
 	
 
 });
+
+function placerLieu(lieu) {
+    L.marker([lieu.lattitude, lieu.longitude]).addTo(mapJeu).on('click', function() {
+		
+	);
+}
+
+
 
