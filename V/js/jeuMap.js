@@ -37,7 +37,10 @@ $(document).ready(function() {
         // Réactive les boutons
         requestLieux.always(function(){
             $(".btnChoix").prop("disabled", false);
-        })
+        });
+        
+        // Recharge la carte
+        mapJeu.invalidateSize();
     });
     
     //Chargement initial de la MAP
@@ -50,8 +53,6 @@ $(document).ready(function() {
 			'Imagery © <a href="http://mapbox.com">Mapbox</a>',
 		id: 'mapbox.streets'
 	}).addTo(mapJeu);
-	
-	
 	
 	
 	
@@ -96,7 +97,7 @@ $(document).ready(function() {
 function placerLieu(lieu) {
     L.marker([lieu.lattitude, lieu.longitude]).addTo(mapJeu).on('click', function() {
 		
-	);
+    });
 }
 
 
