@@ -1,4 +1,6 @@
 var mapJeu;
+var latSelect;
+var lngSelect;
 
 $(document).ready(function() {
 
@@ -54,7 +56,11 @@ $(document).ready(function() {
 		id: 'mapbox.streets'
 	}).addTo(mapJeu);
 	
-	
+	//enregistrement des coordonnées en cas de click
+	map.on('click', function(e) {
+		latSelect = e.latlng.lat;
+		lngSelect = e.latlng.lng;
+	});
 	
 	/*
 	$.each(lieux, function(i, obj) {
@@ -94,11 +100,29 @@ $(document).ready(function() {
 
 });
 
-function placerLieu(lieu) {
-    L.marker([lieu.lattitude, lieu.longitude]).addTo(mapJeu).on('click', function() {
-		
-    });
+function placerLieu() {
+    L.marker([latSelect, lngSelect]).addTo(mapJeu);
 }
+
+function getPays {
+	requestPays = $.ajax({
+        url: "https://maps.googleapis.com/maps/api/geocode/json?""&key=",
+        type: "get",
+		data: {
+			latlng: latSelect + "," + lngSelect,
+			language: "fr",
+			result_type: "country",
+			key: "AIzaSyC6vrb1AQkk7wg9iduRGMUb4gwfBBJnYRQ";
+		};	
+          
+    });
+	requestPays.done(function(data, status) {
+		alert(data); 
+}
+
+
+
+
 
 
 
