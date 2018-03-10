@@ -1,1 +1,0 @@
-<h1>Classement</h1>

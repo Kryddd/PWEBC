@@ -12,7 +12,7 @@
                 <a class="nav-link" href="index.php?controle=user&action=play">Jouer</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index.php?controle=user&action=classement">Classement</a>
+                <a class="nav-link" href="index.php?controle=user&action=ranking">Classement</a>
             </li>
         </ul>
         <form class="form-inline mt-2 mt-md-0">

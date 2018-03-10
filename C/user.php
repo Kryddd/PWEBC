@@ -102,23 +102,8 @@ function ranking() {
     require("M/rankingDB.php");
     $ranking = rankingDB();
 	
-	echo "<table border='1'>";
-		echo "<tr>";
-			echo "<th>Classement</th>";
-			echo "<th>Pseudonyme</th>";
-			echo "<th>Score total</th>";
-		echo "</tr>";
-		
-		$i = 1;
-		foreach($ranking as $classementPerso) { 
-			echo "<tr>";
-				echo "<td>".$i."</td>";
-				echo "<td>".$ranking['nom']."</td>";
-				echo "<td>".$ranking['scoreTotal']."</td>";
-			echo"</tr>";
-			$i++;
-		}
-	echo"</table>";
+	
+    require("V/base.tpl");
 }
 
 function disconnect() {
