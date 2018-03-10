@@ -45,6 +45,11 @@ $(document).ready(function() {
         mapJeu.invalidateSize();
     });
     
+    $("#btnValider").click(function(){
+        alert('oui');
+        getPays();
+    });
+    
     //Chargement initial de la MAP
     mapJeu = L.map('map').setView([51.505, -0.09], 13);
     
@@ -57,7 +62,7 @@ $(document).ready(function() {
 	}).addTo(mapJeu);
 	
 	//enregistrement des coordonnées en cas de click
-	map.on('click', function(e) {
+	mapJeu.on('click', function(e) {
 		latSelect = e.latlng.lat;
 		lngSelect = e.latlng.lng;
 	});
@@ -104,20 +109,22 @@ function placerLieu() {
     L.marker([latSelect, lngSelect]).addTo(mapJeu);
 }
 
-function getPays {
+function getPays() {
 	requestPays = $.ajax({
-        url: "https://maps.googleapis.com/maps/api/geocode/json?""&key=",
+        url: "https://maps.googleapis.com/maps/api/geocode/json",
         type: "get",
 		data: {
 			latlng: latSelect + "," + lngSelect,
 			language: "fr",
 			result_type: "country",
-			key: "AIzaSyC6vrb1AQkk7wg9iduRGMUb4gwfBBJnYRQ";
-		};	
+			key: "AIzaSyC7j_mUbyjKf3e2FXomIVbDoYDkGLreQO8"
+		}	
           
     });
 	requestPays.done(function(data, status) {
-		alert(data); 
+		alert(JSON.stringify(data));
+        alert(data['results'][0]['address_components'][0]['long_name']);
+    });
 }
 
 
