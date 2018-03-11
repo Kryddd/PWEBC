@@ -17,11 +17,11 @@
     </div>
     <?php $i++; } ?>
 </div>
-
 <div id="partie">
     <h3 id="nomPartie"></h3>
+    <div class="alert alert-info"><p id="alert"></p></div>
     <div id="map" class="ui-widget-header" ></div>
 	<button id="btnValider" type="button">Valider</button>
-	<div id="streetview" style="width: 500px; height: 500px;"></div>
+	<div id="streetview" style="width: 900px; height: 400px;"></div>
     
 </div>
