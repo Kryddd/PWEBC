@@ -110,7 +110,8 @@ function ranking() {
 function savePartie() {
     require("M/userDB.php");
     $idUser = getIdFromLoginPwd($_SESSION['login'], $_SESSION['mdp']);
-    echo(json_encode($idUser));
+    
+    // Enregistre la partie
     saveGame($idUser['idUtilisateur'], $_POST['idPartie'], $_POST['scoreJoueur']);
     
 }

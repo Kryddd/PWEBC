@@ -42,7 +42,6 @@ $(document).ready(function() {
 
         requestLieux.done(function(response, textStatus){
             lieux = JSON.parse(response);
-            console.log(lieux["data"].length);
             countLieu = 0;
             
             // Affiche le num du lieu en cours
@@ -120,9 +119,6 @@ $(document).ready(function() {
                         scoreJoueur: score
                     }
                 });
-                requestSave.always(function(data) {
-                    alert(data);
-                })
             }
         });
         requestPays.fail(function() {
