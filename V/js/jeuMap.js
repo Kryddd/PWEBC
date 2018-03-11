@@ -112,7 +112,7 @@ $(document).ready(function() {
                 $("#streetview").hide();
                 
                 // Ajax pour l'enregistrement du score
-                $.ajax({
+                requestSave = $.ajax({
                     url: "index.php?controle=user&action=savePartie",
                     type: "post",
                     data: {
@@ -120,6 +120,9 @@ $(document).ready(function() {
                         scoreJoueur: score
                     }
                 });
+                requestSave.always(function(data) {
+                    alert(data);
+                })
             }
         });
         requestPays.fail(function() {

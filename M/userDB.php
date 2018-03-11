@@ -46,10 +46,25 @@ function signupDB($username, $password) {
     
     $insertUser->bindParam(1, $username);
     $insertUser->bindParam(2, $password);
-	$insertUser->bindParam(3, 0);
     $insertUser->execute();
     
     return true;
+}
+
+function getIdFromLoginPwd($login, $pwd) {
+    require('M/connectDB.php');
+    
+    $queryUser = "SELECT idUtilisateur FROM utilisateur
+    WHERE username=? AND password=?";
+    
+    $prepUserId = $dbh->prepare($queryUser);
+    
+    $prepUserId->bindValue(1, $login, PDO::PARAM_STR);
+    $prepUserId->bindValue(2, $pwd, PDO::PARAM_STR);
+    $prepUserId->execute();
+    
+    $idUser = $prepUserId->fetch();
+    return $idUser;
 }
 
 function fetchParties() {
@@ -75,4 +90,19 @@ function fetchLieuxDB($numPartie) {
     return $lieux;
 }
 
-?>
+function saveGame($idUser, $idPartie, $score) {
+    require('M/connectDB.php');
+    
+    // TODO Ecraser la partie précedente si le score est inferieur
+    
+    $insert = 'INSERT INTO joue(idUtilisateur, idPartie, score)
+    VALUES(?, ?, ?)';
+    
+    $prepInsert = $dbh->prepare($insert);
+    
+    $prepInsert->bindParam(1, $idUser);
+    $prepInsert->bindParam(2, $idPartie);
+    $prepInsert->bindParam(3, $score);
+    $prepInsert->execute();
+}
+
