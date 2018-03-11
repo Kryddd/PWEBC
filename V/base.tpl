@@ -24,7 +24,7 @@ global $action;
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
 
-		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6vrb1AQkk7wg9iduRGMUb4gwfBBJnYRQ&callback=initMap"></script>
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7j_mUbyjKf3e2FXomIVbDoYDkGLreQO8"></script>
         <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
         <script src="./V/js/jeuMap.js"></script>
 

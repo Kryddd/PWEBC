@@ -11,6 +11,7 @@ function login() {
     }
     else {
         require("M/userDB.php");
+        // Vérifie l'utilisateur et le mot de passe
         if  (!loginDB($login,$mdp)) {
             $msg = "erreur de saisie";
             require('V/base.tpl') ;
@@ -93,7 +94,7 @@ function play() {
 function getLieux() {
     // Appelée via ajax
     require("M/userDB.php");
-    $lieux = fetchLieuxDB($_POST['partie']);
+    $lieux['data'] = fetchLieuxDB($_POST['partie']);
     
     echo(json_encode($lieux));
 }
@@ -106,9 +107,11 @@ function ranking() {
     require("V/base.tpl");
 }
 
+function savePartie() {
+    
+}
+
 function disconnect() {
-    require("M/disconnectDB.php");
-    // disconnectDB();
     session_destroy();
     header("Location:index.php");
 }

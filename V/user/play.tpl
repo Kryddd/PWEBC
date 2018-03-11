@@ -22,6 +22,6 @@
     <h3 id="nomPartie"></h3>
     <div id="map" class="ui-widget-header" ></div>
 	<button id="btnValider" type="button">Valider</button>
-	<div id="streetview"></div>
-    <div id="persodraggable" class="ui-widget-content" style="border: solid; width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0;"></div>
+	<div id="streetview" style="width: 500px; height: 500px;"></div>
+    
 </div>
