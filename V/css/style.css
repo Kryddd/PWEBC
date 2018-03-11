@@ -44,12 +44,25 @@ h1 {
 }
 
 body {
-    margin-top: 10vh;
+    margin-top: 8vh;
 }
 
 /* MAP */
 
+#partie {
+    text-align: center;
+}
+
 #map {
     width: 900px;
-    height: 400px;
+    height: 300px;
+}
+
+#streetview {
+    width: 900px;
+    height: 300px;
+}
+
+#blockBetween {
+    display: inline;
 }

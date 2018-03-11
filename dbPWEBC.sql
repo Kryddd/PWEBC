@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Lun 05 Mars 2018 à 21:50
+-- Généré le :  Dim 11 Mars 2018 à 21:44
 -- Version du serveur :  5.7.11
 -- Version de PHP :  7.0.3
 
@@ -29,8 +29,16 @@ SET time_zone = "+00:00";
 CREATE TABLE `joue` (
   `score` int(11) NOT NULL,
   `idUtilisateur` int(11) NOT NULL,
-  `idTest` int(11) NOT NULL
+  `idPartie` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `joue`
+--
+
+INSERT INTO `joue` (`score`, `idUtilisateur`, `idPartie`) VALUES
+(6, 1, 1),
+(5, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -53,12 +61,12 @@ CREATE TABLE `lieu` (
 --
 
 INSERT INTO `lieu` (`idLieu`, `lienImg`, `longitude`, `lattitude`, `pays`, `nomLieu`, `idPartie`) VALUES
-(1, NULL, NULL, NULL, 'France', 'Tour Eiffel', 1),
-(2, NULL, NULL, NULL, 'Angleterre', 'Big Ben', 1),
-(3, NULL, NULL, NULL, 'Italie', 'Colisee', 1),
-(4, NULL, NULL, NULL, 'Allemagne', 'Fernsehturm', 1),
-(5, NULL, NULL, NULL, 'Russie', 'Kremlin', 1),
-(6, NULL, NULL, NULL, 'Espagne', 'Sagrada Familia', 1);
+(1, NULL, 2.29429, 48.8581, 'France', 'Tour Eiffel', 1),
+(2, NULL, -0.124625, 51.5007, 'Royaume-Uni', 'Big Ben', 1),
+(3, NULL, 12.4922, 41.8902, 'Italie', 'Colisee', 1),
+(4, NULL, 13.4094, 52.5208, 'Allemagne', 'Fernsehturm', 1),
+(5, NULL, 37.6175, 55.752, 'Russie', 'Kremlin', 1),
+(6, NULL, 2.17436, 41.4036, 'Espagne', 'Sagrada Familia', 1);
 
 -- --------------------------------------------------------
 
@@ -89,8 +97,7 @@ INSERT INTO `partie` (`idPartie`, `nomPartie`, `difficulte`) VALUES
 CREATE TABLE `utilisateur` (
   `idUtilisateur` int(11) NOT NULL,
   `username` varchar(25) NOT NULL,
-  `password` varchar(25) NOT NULL,
-  `scoreTotal` int(11) NOT NULL
+  `password` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -109,8 +116,8 @@ INSERT INTO `utilisateur` (`idUtilisateur`, `username`, `password`) VALUES
 -- Index pour la table `joue`
 --
 ALTER TABLE `joue`
-  ADD PRIMARY KEY (`idUtilisateur`,`idTest`),
-  ADD KEY `FK_joue_idTest` (`idTest`);
+  ADD PRIMARY KEY (`idUtilisateur`,`idPartie`),
+  ADD KEY `FK_joue_idTest` (`idPartie`);
 
 --
 -- Index pour la table `lieu`
@@ -159,7 +166,7 @@ ALTER TABLE `utilisateur`
 -- Contraintes pour la table `joue`
 --
 ALTER TABLE `joue`
-  ADD CONSTRAINT `FK_joue_idTest` FOREIGN KEY (`idTest`) REFERENCES `partie` (`idPartie`),
+  ADD CONSTRAINT `FK_joue_idTest` FOREIGN KEY (`idPartie`) REFERENCES `partie` (`idPartie`),
   ADD CONSTRAINT `FK_joue_idUtilisateur` FOREIGN KEY (`idUtilisateur`) REFERENCES `utilisateur` (`idUtilisateur`);
 
 --

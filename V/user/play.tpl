@@ -20,8 +20,12 @@
 <div id="partie">
     <h3 id="nomPartie"></h3>
     <div class="alert alert-info"><p id="alert"></p></div>
+    <p id="lieuEnCours"></p>
     <div id="map" class="ui-widget-header" ></div>
-	<button id="btnValider" type="button">Valider</button>
-	<div id="streetview" style="width: 900px; height: 400px;"></div>
-    
+    <div id="blockBetween">
+        <p id="textPays"></p>
+        <button id="btnValider" type="button">Valider</button>
+    </div>
+    <div id="streetview" style="width: 900px; height: 400px;"></div>
+
 </div>

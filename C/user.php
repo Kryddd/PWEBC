@@ -108,6 +108,7 @@ function ranking() {
 }
 
 function savePartie() {
+    require("M/userDB.php");
     
 }
 
