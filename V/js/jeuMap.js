@@ -43,6 +43,23 @@ $(document).ready(function() {
         
         // Recharge la carte
         mapJeu.invalidateSize();
+		
+		// Met en place la streetview du lieu
+		var sv = new google.maps.StreetViewService();
+        var panorama = new google.maps.StreetViewPanorama(document.getElementById('streetview'));
+		//mettre ce qui suit dans une fonction qui prend en compte le numéro du lieu dans la partie
+		sv.getPanorama({location: new LatLng(lieux[/**/][lattitude], lieux[/**/][longitude]), radius: 50}, function(data, status) {
+			if (status === 'OK') {
+				panorama.setPano(data.location.pano);
+				panorama.setPov({
+					heading: 270,
+					pitch: 0
+				});
+			}
+			else {
+				alert('Street View data not found for this location.');
+			}
+		});
     });
     
     $("#btnValider").click(function(){
@@ -60,6 +77,7 @@ $(document).ready(function() {
 			'Imagery © <a href="http://mapbox.com">Mapbox</a>',
 		id: 'mapbox.streets'
 	}).addTo(mapJeu);
+
 	
 	//enregistrement des coordonnées en cas de click
 	mapJeu.on('click', function(e) {
