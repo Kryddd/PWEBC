@@ -124,6 +124,7 @@ $(document).ready(function() {
         requestPays.fail(function() {
             clickedCountry = "";
         });
+		
 
     });
 
@@ -167,6 +168,24 @@ $(document).ready(function() {
         });
     });
 
+	// dialogue aide accueil
+	
+		$( "#dialogue" ).dialog({
+			autoOpen: false,
+			show: {
+				effect: "bounce",
+				duration: 1000
+			},
+			hide: {
+				effect: "fade",
+				duration: 1000
+			}
+		});
+ 
+		$( "#buttonAide" ).on( "click", function() {
+			$( "#dialogue" ).dialog( "open" );
+		});
+    
 
 });
 
