@@ -43,10 +43,10 @@ $(document).ready(function() {
         requestLieux.done(function(response, textStatus){
             lieux = JSON.parse(response);
             countLieu = 0;
-            
+
             // Affiche le num du lieu en cours
             $("#lieuEnCours").text((countLieu + 1) + " / " + lieux["data"].length);
-            
+
             // Charge le streetview
             initializeSV();
         });
@@ -79,7 +79,7 @@ $(document).ready(function() {
             if(clickedCountry == lieux['data'][countLieu]['pays']) {
                 // Bonne réponse
                 $("#alert").text("Oui!");
-                
+
                 // Rajoute un point
                 score++;
             }
@@ -91,25 +91,25 @@ $(document).ready(function() {
             $("#alert").text($("#alert").text() + " Le Lieu était : " + 
                              lieux['data'][countLieu]['nomLieu'] + " , " +
                              lieux['data'][countLieu]['pays']);
-            
+
             // Passe au lieu suivant
             countLieu++;
             if(countLieu < lieux['data'].length) {
                 // Change le num du lieu affiché
                 $("#lieuEnCours").text((countLieu + 1) + " / " + lieux["data"].length);
-                
+
                 // Rechargement du streetview
                 initializeSV()
             }
             else {
                 // Fin de partie
-                
+
                 // Masque les controles
                 $("#lieuEnCours").text("Fin du jeu! score : " + score + " / " + lieux['data'].length);
                 $("#map").hide();
                 $("#blockBetween").hide();
                 $("#streetview").hide();
-                
+
                 // Ajax pour l'enregistrement du score
                 requestSave = $.ajax({
                     url: "index.php?controle=user&action=savePartie",
@@ -124,7 +124,7 @@ $(document).ready(function() {
         requestPays.fail(function() {
             clickedCountry = "";
         });
-		
+
 
     });
 
@@ -144,7 +144,7 @@ $(document).ready(function() {
             mapJeu.removeLayer(marker);
         }
         marker = placerLieu();
-        
+
         // Afichage du nom du pays
         requestPays = $.ajax({
             url: "https://maps.googleapis.com/maps/api/geocode/json",
@@ -167,25 +167,6 @@ $(document).ready(function() {
             $("#textPays").text(clickedCountry);
         });
     });
-
-	// dialogue aide accueil
-	
-		$( "#dialogue" ).dialog({
-			autoOpen: false,
-			show: {
-				effect: "bounce",
-				duration: 1000
-			},
-			hide: {
-				effect: "fade",
-				duration: 1000
-			}
-		});
- 
-		$( "#buttonAide" ).on( "click", function() {
-			$( "#dialogue" ).dialog( "open" );
-		});
-    
 
 });
 
@@ -223,7 +204,6 @@ function initializeSV() {
                 heading: 34,
                 pitch: 10
             },
-            motionTracking: false,
             motionTrackingControl: false,
             addressControl: false,
             zoomControl: false,
@@ -246,12 +226,24 @@ function loadMap() {
     }).addTo(mapJeu);
 
 
-    
+
 }
 
+// dialogue aide accueil
+$( function() {
+    $( "#dialog" ).dialog({
+        autoOpen: false,
+        show: {
+            effect: "blind",
+            duration: 1000
+        },
+        hide: {
+            effect: "explode",
+            duration: 1000
+        }
+    });
 
-
-
-
-
-
+    $( "#opener" ).on( "click", function() {
+        $( "#dialog" ).dialog( "open" );
+    });
+} );
