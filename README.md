@@ -17,3 +17,9 @@ $db = "/* Nom de la base de données */";
 $user = "/* Login de la base de données */";
 $pass = "/* Mot de passe de la base de données */";
 ```
+
+## Règles du jeu
+Le jeu consiste à trouver dans quel pays un panorama se trouve
+* Par exemple : si l'on observe la tour Eiffel sur le panorama, il faut cliquer sur la France sur la carte.
+
+L'utilisateur a la possibilité de créer un compte, se connecter et comparer son score avec les autres joueurs.
